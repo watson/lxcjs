@@ -1,11 +1,12 @@
 #include <nan.h>
+#include <lxc/lxccontainer.h>
 
 using namespace v8;
 
 NAN_METHOD(Version) {
   NanScope();
 
-  Local<String> version = NanNew<String>("unknown");
+  Local<String> version = NanNew<String>(lxc_get_version());
 
   NanReturnValue(version);
 }
